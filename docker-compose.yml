@@ -1,7 +1,7 @@
 services:
   db:
     image: postgis/postgis:15-3.4-alpine
-    container_name: real_estate_db
+    container_name: imobiliaria_db
     restart: always
     environment:
       POSTGRES_USER: root
@@ -16,7 +16,7 @@ services:
 
   api:
     build: .
-    container_name: real_estate_api
+    container_name: imobiliaria_api
     depends_on:
       - db
     environment:
