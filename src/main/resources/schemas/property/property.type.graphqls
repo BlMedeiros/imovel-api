@@ -1,0 +1,14 @@
+type Query {
+    searchPropertyById(id: ID!): Property
+}
+
+interface Property {
+    id: ID
+    price: Float
+    location: Location
+}
+
+type Location {
+    city: String!
+
+}
