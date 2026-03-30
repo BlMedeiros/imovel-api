@@ -33,6 +33,6 @@ public abstract class Property {
 
     @Column(name = "property_status")
     @Enumerated(EnumType.STRING)
-    private PropertyStatus propertyStatus = PropertyStatus.AVALIABLE;
+    private PropertyStatus propertyStatus = PropertyStatus.AVAILABLE;
 
 }
