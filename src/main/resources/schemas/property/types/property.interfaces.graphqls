@@ -1,0 +1,13 @@
+interface Property {
+    id: ID!
+    price: Float
+    totalArea: Float
+    localization: Localization!
+    geographicPoint: GeographicPoint
+    propertyStatus: PropertyStatus
+}
+
+enum PropertyStatus {
+    AVAILABLE,
+    SOLD
+}

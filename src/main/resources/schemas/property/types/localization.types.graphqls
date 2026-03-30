@@ -1,0 +1,10 @@
+type Localization {
+    street: String!
+    city: String!
+
+}
+
+type GeographicPoint {
+    latitude: Float!
+    longitude: Float!
+}
