@@ -1,17 +1,24 @@
-type Query {
-    searchPropertyById(id: ID!): Property
-}
-
 type CommercialProperty implements Property {
     id: ID!
     price: Float
     totalArea: Float
     localization: Localization!
-    geographicPoint: GeographicPoint
     propertyStatus: PropertyStatus
 
-    officeRooms: Int!
-    bathrooms: Int!
-    parkingSpots: Int!
-    isStreetFront: Boolean!
+    officeRooms: Int
+    bathrooms: Int
+    parkingSpots: Int
+    isStreetFront: Boolean
+}
+
+type ResidentialProperty implements Property {
+    id: ID!
+    price: Float
+    totalArea: Float
+    localization: Localization!
+    propertyStatus: PropertyStatus
+
+    bedrooms: Int
+    parkingSpots: Int
+    hasPool: Boolean
 }

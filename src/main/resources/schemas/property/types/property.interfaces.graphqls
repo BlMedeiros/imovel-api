@@ -3,11 +3,11 @@ interface Property {
     price: Float
     totalArea: Float
     localization: Localization!
-    geographicPoint: GeographicPoint
     propertyStatus: PropertyStatus
 }
 
 enum PropertyStatus {
+    DRAFT,
     AVAILABLE,
     SOLD
 }

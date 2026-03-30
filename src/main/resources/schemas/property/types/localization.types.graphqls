@@ -2,6 +2,8 @@ type Localization {
     street: String!
     city: String!
 
+    geographicPoint: GeographicPoint!
+
 }
 
 type GeographicPoint {
