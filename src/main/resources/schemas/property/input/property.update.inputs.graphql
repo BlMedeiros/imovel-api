@@ -1,0 +1,20 @@
+input UpdateResidentialPropertyInput {
+    id: ID!
+    price: Float
+    totalArea: Float
+    localization: LocalizationInput
+    bedrooms: Int
+    parkingSpots: Int
+    hasPool: Boolean
+}
+
+input UpdateCommercialPropertyInput {
+    id: ID!
+    price: Float
+    totalArea: Float
+    localization: LocalizationInput
+    officeRooms: Int
+    bathrooms: Int
+    parkingSpots: Int
+    isStreetFront: Boolean
+}

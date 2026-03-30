@@ -1,0 +1,33 @@
+input CreateCommercialPropertyInput {
+    price: Float
+    totalArea: Float!
+    localization: LocalizationInput!
+
+    officeRooms: Int!
+    bathrooms: Int!
+    parkingSpots: Int!
+    isStreetFront: Boolean!
+}
+
+input CreateResidentialPropertyInput {
+    price: Float
+    totalArea: Float!
+    localization: LocalizationInput!
+
+    bedrooms: Int!
+    parkingSpots: Int!
+    hasPool: Boolean!
+}
+
+input LocalizationInput {
+    street: String!
+    neighborhood: String!
+    city: String!
+
+    geographicPoint: GeographicPointInput!
+}
+
+input GeographicPointInput {
+    latitude: Float!
+    longitude: Float!
+}
