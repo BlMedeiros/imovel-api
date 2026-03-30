@@ -3,6 +3,7 @@ package com.bruno.imovel.domain.property.types;
 import com.bruno.imovel.domain.common.exception.DomainValidationException;
 import com.bruno.imovel.domain.property.core.Localization;
 import com.bruno.imovel.domain.property.core.Property;
+import com.bruno.imovel.domain.property.core.PropertyStatus;
 import com.bruno.imovel.domain.property.exception.InvalidAreaException;
 import com.bruno.imovel.domain.property.exception.InvalidPriceException;
 import jakarta.persistence.Column;
@@ -12,7 +13,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import org.locationtech.jts.geom.Point;
 
 @Entity
 @NoArgsConstructor
@@ -28,39 +28,38 @@ public class CommercialProperty extends Property {
     @Column(nullable = false)
     private int bathrooms;            // banheiros
 
-    @Column(name = "parking_spots",nullable = false)
+    @Column(name = "parking_spots", nullable = false)
     private int parkingSpots;         // vagas de garagem/estacionamento
 
     @Column(name = "is_street_front", nullable = false)
     private boolean isStreetFront;    // se é imóvel de frente para a rua
 
     public static CommercialProperty create(Double price,
-                                             Double totalArea,
-                                             Point geographicPoint,
-                                             Localization localization,
-                                             int officeRooms,
-                                             int bathrooms,
-                                             int parkingSpots,
-                                             boolean isStreetFront) {
+                                            Double totalArea,
+                                            Localization localization,
+                                            int officeRooms,
+                                            int bathrooms,
+                                            int parkingSpots,
+                                            boolean isStreetFront) {
 
-        validate(price, totalArea, officeRooms, bathrooms, parkingSpots);
+        validate(price, totalArea, officeRooms, bathrooms, parkingSpots, localization);
 
         return CommercialProperty.builder()
                 .price(price)
                 .totalArea(totalArea)
-                .geographicPoint(geographicPoint)
                 .localization(localization)
                 .officeRooms(officeRooms)
                 .bathrooms(bathrooms)
                 .parkingSpots(parkingSpots)
                 .isStreetFront(isStreetFront)
+                .propertyStatus(PropertyStatus.DRAFT)
                 .build();
     }
 
-    private static void validate(Double price, Double totalArea, int officeRooms, int bathrooms, int parkingSpots) {
+    private static void validate(Double price, Double totalArea, int officeRooms, int bathrooms, int parkingSpots, Localization localization) {
 
-        if (price == null || price <= 0) {
-            throw new InvalidPriceException("O preço deve ser maior que zero.");
+        if (price != null && price <= 0) {
+            throw new InvalidPriceException("O preço, quando informado, deve ser maior que zero.");
         }
 
         if (totalArea == null || totalArea <= 0) {
@@ -77,6 +76,10 @@ public class CommercialProperty extends Property {
 
         if (parkingSpots < 0) {
             throw new DomainValidationException("O número de vagas não pode ser negativo.");
+        }
+
+        if (localization == null || localization.getGeographicPoint() == null) {
+            throw new DomainValidationException("A localização com coordenadas geográficas é obrigatória.");
         }
     }
 
