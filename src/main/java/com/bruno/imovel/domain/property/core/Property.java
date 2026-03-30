@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import org.locationtech.jts.geom.Point;
 
 @MappedSuperclass
 @SuperBuilder
@@ -23,9 +22,6 @@ public abstract class Property {
 
     @Column(nullable = false, name = "total_area")
     private Double totalArea;
-
-    @Column(nullable = false, name = "geographic_point", columnDefinition = "geometry(Point, 4326)")
-    private Point geographicPoint;
 
     @Embedded
     @Column(nullable = false)
