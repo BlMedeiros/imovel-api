@@ -14,14 +14,17 @@ import org.locationtech.jts.geom.PrecisionModel;
 @Setter
 public class Localization {
 
+    @Column(nullable = false)
     private String street;
     private String neighborhood;
+
+    @Column(nullable = false)
     private String city;
 
     @Column(length = 8)
     private String zipCode;
 
-    @Column(columnDefinition = "geometry(Point, 4326)")
+    @Column(columnDefinition = "geometry(Point, 4326)", nullable = false)
     private Point geographicPoint;
 
     public static Point createPoint(Double lat, Double lon) {
