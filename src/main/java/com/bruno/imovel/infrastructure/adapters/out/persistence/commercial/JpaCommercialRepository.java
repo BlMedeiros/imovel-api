@@ -1,4 +1,4 @@
-package com.bruno.imovel.insfrastructure.adapters.out.persistence.commercial;
+package com.bruno.imovel.infrastructure.adapters.out.persistence.commercial;
 
 import com.bruno.imovel.domain.property.types.CommercialProperty;
 import org.springframework.data.jpa.repository.JpaRepository;

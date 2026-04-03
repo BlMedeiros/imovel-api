@@ -1,6 +1,6 @@
-package com.bruno.imovel.insfrastructure.adapters.out.persistence.commercial.entity;
+package com.bruno.imovel.infrastructure.adapters.out.persistence.commercial.entity;
 
-import com.bruno.imovel.insfrastructure.adapters.out.persistence.common.AbstractPropertyEntity;
+import com.bruno.imovel.infrastructure.adapters.out.persistence.common.AbstractPropertyEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

@@ -1,4 +1,4 @@
-package com.bruno.imovel.insfrastructure.adapters.out.persistence.common;
+package com.bruno.imovel.infrastructure.adapters.out.persistence.common;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;

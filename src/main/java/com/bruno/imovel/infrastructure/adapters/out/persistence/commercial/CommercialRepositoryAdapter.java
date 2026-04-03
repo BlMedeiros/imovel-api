@@ -1,4 +1,4 @@
-package com.bruno.imovel.insfrastructure.adapters.out.persistence.commercial;
+package com.bruno.imovel.infrastructure.adapters.out.persistence.commercial;
 
 import com.bruno.imovel.domain.property.ports.out.PropertyRepositoryPort;
 import com.bruno.imovel.domain.property.types.CommercialProperty;

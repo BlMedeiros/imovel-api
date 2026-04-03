@@ -1,4 +1,4 @@
-package com.bruno.imovel.insfrastructure.adapters.out.persistence.common;
+package com.bruno.imovel.infrastructure.adapters.out.persistence.common;
 
 import com.bruno.imovel.domain.property.core.PropertyStatus;
 import jakarta.persistence.*;

@@ -1,4 +1,4 @@
-package com.bruno.imovel.insfrastructure.adapters.out.persistence.residential;
+package com.bruno.imovel.infrastructure.adapters.out.persistence.residential;
 
 import com.bruno.imovel.domain.property.types.ResidentialProperty;
 import org.springframework.data.jpa.repository.JpaRepository;
