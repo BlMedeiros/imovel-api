@@ -14,7 +14,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -22,13 +21,10 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class ResidentialProperty extends Property {
 
-    @Column(nullable = false)
     private int bedrooms;
 
-    @Column(name = "parking_spots", nullable = false)
     private int parkingSpots;
 
-    @Column(name = "has_pool", nullable = false)
     private boolean hasPool;
 
     public static ResidentialProperty create(Double price,
@@ -69,8 +65,12 @@ public class ResidentialProperty extends Property {
             throw new DomainValidationException("O número de banheiros não pode ser negativo.");
         }
 
-        if (localization == null || localization.getGeographicPoint() == null) {
-            throw new DomainValidationException("A localização com coordenadas geográficas é obrigatória.");
+        if (localization == null) {
+            throw new DomainValidationException("A localização é obrigatória.");
+        }
+
+        if (localization.getLatitude() == null || localization.getLongitude() == null) {
+            throw new DomainValidationException("As coordenadas geográficas (latitude e longitude) são obrigatórias.");
         }
     }
 
