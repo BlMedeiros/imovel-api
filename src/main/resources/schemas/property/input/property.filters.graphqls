@@ -1,3 +1,47 @@
-input FilterResidentialProperty {
+type Query {
+    searchResidentialProperties(filter: FilterResidentialProperty): [ResidentialProperty]
 
+    searchCommercialProperties(filter: FilterCommercialProperty): [CommercialProperty]
+}
+
+input FilterResidentialProperty {
+    state: String
+    city: String
+    neighborhood: String
+
+    bedrooms: Int
+    bathrooms: Int
+    parkingSpots: Int
+
+    minPrice: Float
+    maxPrice: Float
+    minArea: Float
+    maxArea: Float
+
+    maxDistanceKm: Float
+
+    hasPool: Boolean
+
+    propertyStatus: PropertyStatus
+}
+
+input FilterCommercialProperty {
+    state: String
+    city: String
+    neighborhood: String
+
+    officeRooms: Int
+    bathrooms: Int
+    parkingSpots: Int
+
+    minPrice: Float
+    maxPrice: Float
+    minArea: Float
+    maxArea: Float
+
+    maxDistanceKm: Float
+
+    isStreetFront: Boolean
+
+    propertyStatus: PropertyStatus
 }
