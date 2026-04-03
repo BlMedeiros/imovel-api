@@ -14,7 +14,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -22,16 +21,12 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class CommercialProperty extends Property {
 
-    @Column(name = "office_rooms", nullable = false)
     private int officeRooms;          // salas / conjuntos
 
-    @Column(nullable = false)
     private int bathrooms;            // banheiros
 
-    @Column(name = "parking_spots", nullable = false)
     private int parkingSpots;         // vagas de garagem/estacionamento
 
-    @Column(name = "is_street_front", nullable = false)
     private boolean isStreetFront;    // se é imóvel de frente para a rua
 
     public static CommercialProperty create(Double price,
@@ -78,8 +73,12 @@ public class CommercialProperty extends Property {
             throw new DomainValidationException("O número de vagas não pode ser negativo.");
         }
 
-        if (localization == null || localization.getGeographicPoint() == null) {
-            throw new DomainValidationException("A localização com coordenadas geográficas é obrigatória.");
+        if (localization == null) {
+            throw new DomainValidationException("A localização é obrigatória.");
+        }
+
+        if (localization.getLatitude() == null || localization.getLongitude() == null) {
+            throw new DomainValidationException("As coordenadas geográficas (latitude e longitude) são obrigatórias.");
         }
     }
 
