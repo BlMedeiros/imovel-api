@@ -2,34 +2,32 @@ package com.bruno.imovel.domain.property.core;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.GeometryFactory;
 import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.geom.PrecisionModel;
 
-@Embeddable
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Localization {
-
-    @Column(nullable = false)
     private String street;
     private String neighborhood;
-
-    @Column(nullable = false)
     private String city;
-
-    @Column(length = 8)
     private String zipCode;
+    private Double latitude;
+    private Double longitude;
 
-    @Column(columnDefinition = "geometry(Point, 4326)", nullable = false)
-    private Point geographicPoint;
-
-    public static Point createPoint(Double lat, Double lon) {
-        GeometryFactory factory = new GeometryFactory(new PrecisionModel(), 4326);
-        return factory.createPoint(new Coordinate(lon, lat));
+    public static Localization create(String street, String city, Double lat, Double lon) {
+        return Localization.builder()
+                .street(street)
+                .city(city)
+                .latitude(lat)
+                .longitude(lon)
+                .build();
     }
 }
 

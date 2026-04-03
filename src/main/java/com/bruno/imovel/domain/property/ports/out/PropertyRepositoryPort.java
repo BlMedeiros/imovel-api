@@ -1,4 +1,4 @@
-package com.bruno.imovel.domain.property.ports;
+package com.bruno.imovel.domain.property.ports.out;
 
 import com.bruno.imovel.domain.property.core.Property;
 
