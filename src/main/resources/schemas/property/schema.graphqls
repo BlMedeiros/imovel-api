@@ -1,0 +1,11 @@
+type Query {
+    searchResidentialProperties(filter: FilterResidentialProperty): [ResidentialProperty]
+
+    searchCommercialProperties(filter: FilterCommercialProperty): [CommercialProperty]
+}
+
+type Mutation {
+    createCommercialProperty(input: CreateCommercialPropertyInput): CommercialProperty
+
+    createResidentialProperty(input:CreateResidentialPropertyInput): ResidentialProperty
+}
