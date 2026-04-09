@@ -1,9 +1,3 @@
-type Query {
-    searchResidentialProperties(filter: FilterResidentialProperty): [ResidentialProperty]
-
-    searchCommercialProperties(filter: FilterCommercialProperty): [CommercialProperty]
-}
-
 input FilterResidentialProperty {
     state: String
     city: String
