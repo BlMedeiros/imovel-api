@@ -1,12 +1,6 @@
 package com.bruno.imovel.domain.property.core;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import lombok.*;
-import org.locationtech.jts.geom.Coordinate;
-import org.locationtech.jts.geom.GeometryFactory;
-import org.locationtech.jts.geom.Point;
-import org.locationtech.jts.geom.PrecisionModel;
 
 @Getter
 @Setter
