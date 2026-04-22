@@ -25,8 +25,10 @@ public class ResidentialPredicateBuilder {
 
         Stream.of(
                 ifNotNull(dto.bedrooms(),     () -> q.bedrooms.eq(dto.bedrooms())),
+                ifNotNull(dto.bathrooms(),    () -> q.bathrooms.eq(dto.bathrooms())),
                 ifNotNull(dto.parkingSpots(), () -> q.parkingSpots.eq(dto.parkingSpots())),
-                ifTrue(dto.hasPool(),         q.hasPool::isTrue)
+                ifTrue(dto.hasPool(),         q.hasPool::isTrue),
+                ifTrue(dto.hasGarden(),       q.hasGarden::isTrue)
         ).forEach(builder::and);
 
         return builder;

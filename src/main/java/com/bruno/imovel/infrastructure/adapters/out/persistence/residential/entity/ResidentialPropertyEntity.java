@@ -23,11 +23,16 @@ public class ResidentialPropertyEntity extends AbstractPropertyEntity {
 
     private int bedrooms;
 
+    private int bathrooms;
+
     @Column(name = "parking_spots")
     private int parkingSpots;
 
     @Column(name = "has_pool")
     private boolean hasPool;
+
+    @Column(name = "has_garden")
+    private boolean hasGarden;
 
     @Embedded
     private LocalizationEntity localization;
