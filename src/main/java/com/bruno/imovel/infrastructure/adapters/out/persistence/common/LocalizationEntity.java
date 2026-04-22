@@ -20,11 +20,12 @@ public class LocalizationEntity {
     private String street;
 
     private String neighborhood;
+    private String state;
 
     @Column(nullable = false)
     private String city;
 
-    @Column(length = 8)
+    @Column(length = 8,nullable = false)
     private String zipCode;
 
     @Column(columnDefinition = "geometry(Point, 4326)", nullable = false)

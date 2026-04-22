@@ -1,7 +1,9 @@
 package com.bruno.imovel.infrastructure.adapters.out.persistence.residential.entity;
 
 import com.bruno.imovel.infrastructure.adapters.out.persistence.common.AbstractPropertyEntity;
+import com.bruno.imovel.infrastructure.adapters.out.persistence.common.LocalizationEntity;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -26,4 +28,7 @@ public class ResidentialPropertyEntity extends AbstractPropertyEntity {
 
     @Column(name = "has_pool")
     private boolean hasPool;
+
+    @Embedded
+    private LocalizationEntity localization;
 }
