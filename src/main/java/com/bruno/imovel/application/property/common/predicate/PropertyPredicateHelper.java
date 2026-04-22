@@ -1,4 +1,4 @@
-package com.bruno.imovel.application.property.common;
+package com.bruno.imovel.application.property.common.predicate;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
 import io.micrometer.common.util.StringUtils;
