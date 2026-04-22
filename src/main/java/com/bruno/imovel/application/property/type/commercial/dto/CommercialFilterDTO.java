@@ -1,5 +1,6 @@
 package com.bruno.imovel.application.property.type.commercial.dto;
 
+import com.bruno.imovel.application.property.common.dto.BaseFilterDTO;
 import com.bruno.imovel.domain.property.core.PropertyStatus;
 
 import java.math.BigDecimal;
@@ -22,5 +23,5 @@ public record CommercialFilterDTO(
         Double maxDistanceKm,
         PropertyStatus propertyStatus
 
-) {
+) implements BaseFilterDTO {
 }
