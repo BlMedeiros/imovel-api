@@ -14,6 +14,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+import java.math.BigDecimal;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -29,7 +31,7 @@ public class CommercialProperty extends Property {
 
     private boolean isStreetFront;    // se é imóvel de frente para a rua
 
-    public static CommercialProperty create(Double price,
+    public static CommercialProperty create(BigDecimal price,
                                             Double totalArea,
                                             Localization localization,
                                             int officeRooms,
@@ -51,9 +53,9 @@ public class CommercialProperty extends Property {
                 .build();
     }
 
-    private static void validate(Double price, Double totalArea, int officeRooms, int bathrooms, int parkingSpots, Localization localization) {
+    private static void validate(BigDecimal price, Double totalArea, int officeRooms, int bathrooms, int parkingSpots, Localization localization) {
 
-        if (price != null && price <= 0) {
+        if (price != null && price.compareTo(BigDecimal.ZERO) == 0) {
             throw new InvalidPriceException("O preço, quando informado, deve ser maior que zero.");
         }
 
