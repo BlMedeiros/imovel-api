@@ -1,7 +1,9 @@
 package com.bruno.imovel.infrastructure.adapters.out.persistence.commercial.entity;
 
 import com.bruno.imovel.infrastructure.adapters.out.persistence.common.AbstractPropertyEntity;
+import com.bruno.imovel.infrastructure.adapters.out.persistence.common.LocalizationEntity;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -30,4 +32,7 @@ public class CommercialPropertyEntity extends AbstractPropertyEntity {
 
     @Column(name = "is_street_front", nullable = false)
     private boolean isStreetFront;
+
+    @Embedded
+    private LocalizationEntity localization;
 }
