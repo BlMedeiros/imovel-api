@@ -75,13 +75,27 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
                 <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
                         </path>
+                        <path>
+                            <groupId>com.querydsl</groupId>
+                            <artifactId>querydsl-apt</artifactId>
+                            <version>5.0.0</version>
+                            <classifier>jakarta</classifier>
+                        </path>
                     </annotationProcessorPaths>
+                    <compilerArgs>
+                        <!-- Tell QueryDSL where to put generated sources and enable entity accessors -->
+                        <arg>-Aquerydsl.generatedSourcesDir=${project.build.directory}/generated-sources/querydsl</arg>
+                        <arg>-Aquerydsl.entityAccessors=true</arg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
             <plugin>
