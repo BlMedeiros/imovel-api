@@ -33,6 +33,4 @@ public class CommercialPropertyEntity extends AbstractPropertyEntity {
     @Column(name = "is_street_front", nullable = false)
     private boolean isStreetFront;
 
-    @Embedded
-    private LocalizationEntity localization;
 }
