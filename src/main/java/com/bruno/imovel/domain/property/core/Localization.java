@@ -1,6 +1,10 @@
 package com.bruno.imovel.domain.property.core;
 
 import lombok.*;
+import org.locationtech.jts.geom.Coordinate;
+import org.locationtech.jts.geom.GeometryFactory;
+import org.locationtech.jts.geom.Point;
+import org.locationtech.jts.geom.PrecisionModel;
 
 @Getter
 @Setter
@@ -22,6 +26,13 @@ public class Localization {
                 .latitude(lat)
                 .longitude(lon)
                 .build();
+    }
+
+    public Point getPoint() {
+
+        GeometryFactory geometryFactory = new GeometryFactory(new PrecisionModel(), 4326);
+
+        return geometryFactory.createPoint(new Coordinate(longitude, latitude));
     }
 }
 

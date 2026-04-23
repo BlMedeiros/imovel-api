@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+import java.math.BigDecimal;
+
 @MappedSuperclass
 @Getter
 @Setter
@@ -21,7 +23,7 @@ public abstract class AbstractPropertyEntity {
     private Long id;
 
     @Column(nullable = false)
-    private Double price;
+    private BigDecimal price;
 
     @Column(nullable = false, name = "total_area")
     private Double totalArea;
