@@ -33,7 +33,4 @@ public class ResidentialPropertyEntity extends AbstractPropertyEntity {
 
     @Column(name = "has_garden")
     private boolean hasGarden;
-
-    @Embedded
-    private LocalizationEntity localization;
 }
