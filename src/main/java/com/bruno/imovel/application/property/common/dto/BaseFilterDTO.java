@@ -15,5 +15,7 @@ public interface BaseFilterDTO {
     Double minArea();
     Double maxArea();
 
+    GeoFilterDTO geoFilterDTO();
+
     PropertyStatus propertyStatus();
 }

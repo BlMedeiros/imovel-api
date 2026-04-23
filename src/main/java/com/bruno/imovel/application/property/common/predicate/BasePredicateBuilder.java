@@ -4,6 +4,7 @@ import com.bruno.imovel.application.property.common.dto.BaseFilterDTO;
 import com.bruno.imovel.infrastructure.adapters.out.persistence.common.QAbstractPropertyEntity;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Predicate;
+import com.querydsl.core.types.dsl.Expressions;
 import org.springframework.stereotype.Component;
 
 import java.util.stream.Stream;
@@ -11,7 +12,7 @@ import java.util.stream.Stream;
 import static com.bruno.imovel.application.property.common.predicate.PropertyPredicateHelper.*;
 
 @Component
-public class BasePredicateBuilder {
+public class    BasePredicateBuilder {
 
     public BooleanBuilder buildBasePredicate(QAbstractPropertyEntity q, BaseFilterDTO dto) {
         var builder = new BooleanBuilder();
@@ -26,7 +27,17 @@ public class BasePredicateBuilder {
                 ifNotNull(dto.minArea(),       () -> q.totalArea.goe(dto.minArea())),
                 ifNotNull(dto.maxArea(),       () -> q.totalArea.loe(dto.maxArea())),
 
-                ifNotNull(dto.propertyStatus(),() -> q.propertyStatus.eq(dto.propertyStatus()))
+                ifNotNull(dto.propertyStatus(),() -> q.propertyStatus.eq(dto.propertyStatus())),
+
+                ifNotNull(dto.geoFilterDTO(), () ->
+                        Expressions.booleanTemplate(
+                                "st_dwithin(cast({0} as geography), st_setsrid(st_makepoint({1}, {2}), 4326)::geography, {3})",
+                                q.localization.geographicPoint,
+                                dto.geoFilterDTO().lon(),
+                                dto.geoFilterDTO().lat(),
+                                dto.geoFilterDTO().maxDistanceKm() * 1000
+                        )
+                )
         ).forEach(builder::and);
 
         return builder;
