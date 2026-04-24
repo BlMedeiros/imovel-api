@@ -1,4 +1,4 @@
 package com.bruno.imovel.infrastructure.adapters.in.graphql.dto.request;
 
-public record FilterResidentialPropertyResquest() {
+public record FilterResidentialPropertyRequest() {
 }

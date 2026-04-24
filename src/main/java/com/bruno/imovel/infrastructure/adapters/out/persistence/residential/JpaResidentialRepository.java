@@ -1,11 +1,8 @@
 package com.bruno.imovel.infrastructure.adapters.out.persistence.residential;
 
-import com.bruno.imovel.domain.property.types.ResidentialProperty;
-import com.bruno.imovel.infrastructure.adapters.in.graphql.dto.request.FilterResidentialPropertyResquest;
 import com.bruno.imovel.infrastructure.adapters.out.persistence.residential.entity.ResidentialPropertyEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
-import org.springframework.data.querydsl.binding.QuerydslBinderCustomizer;
 import org.springframework.stereotype.Repository;
 
 @Repository

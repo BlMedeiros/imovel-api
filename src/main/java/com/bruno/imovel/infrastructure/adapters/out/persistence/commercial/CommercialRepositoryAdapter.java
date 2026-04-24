@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @RequiredArgsConstructor
 public class CommercialRepositoryAdapter implements PropertyRepositoryPort<CommercialProperty> {
 
-    private final JpaCommercialRepository jpaCommercialRepository;
+    private final JpaCommercialRepository repository;
 
     @Override
     public CommercialProperty save(CommercialProperty property) {
