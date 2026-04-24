@@ -2,6 +2,7 @@ package com.bruno.imovel.infrastructure.adapters.out.persistence.commercial;
 
 import com.bruno.imovel.domain.property.ports.out.PropertyRepositoryPort;
 import com.bruno.imovel.domain.property.types.CommercialProperty;
+import com.bruno.imovel.infrastructure.adapters.out.persistence.commercial.entity.CommercialPropertyEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -13,7 +14,11 @@ public class CommercialRepositoryAdapter implements PropertyRepositoryPort<Comme
 
     @Override
     public CommercialProperty save(CommercialProperty property) {
-        return null;
+        CommercialPropertyEntity commercialProperty = CommercialPropertyEntity.create(property);
+
+        CommercialPropertyEntity saved = repository.save(commercialProperty);
+
+        return commercialPropertyMapper.toDomain(saved);
     }
 
     @Override
