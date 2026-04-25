@@ -2,6 +2,7 @@ package com.bruno.imovel.infrastructure.adapters.out.persistence.residential;
 
 import com.bruno.imovel.domain.property.ports.out.PropertyRepositoryPort;
 import com.bruno.imovel.domain.property.types.ResidentialProperty;
+import com.bruno.imovel.infrastructure.adapters.out.persistence.residential.entity.ResidentialPropertyEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -13,7 +14,12 @@ public class ResidentialRepositoryAdapter implements PropertyRepositoryPort<Resi
 
     @Override
     public ResidentialProperty save(ResidentialProperty property) {
-        return null;
+
+        ResidentialPropertyEntity residentialProperty = ResidentialPropertyEntity.create(property);
+
+        ResidentialPropertyEntity saved = repository.save(residentialProperty);
+
+        return residentialPropertyMapper.toDomain(saved);
     }
 
     @Override
