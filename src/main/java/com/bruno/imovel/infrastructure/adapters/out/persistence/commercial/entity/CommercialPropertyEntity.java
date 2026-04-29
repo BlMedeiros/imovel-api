@@ -34,18 +34,4 @@ public class CommercialPropertyEntity extends AbstractPropertyEntity {
     @Column(name = "is_street_front", nullable = false)
     private boolean isStreetFront;
 
-    public static CommercialPropertyEntity create(CommercialProperty domain) {
-        return CommercialPropertyEntity.builder()
-                .id(domain.getId())
-                .price(domain.getPrice())
-                .totalArea(domain.getTotalArea())
-                .localization(LocalizationEntity.create(domain.getLocalization()))
-                .propertyStatus(domain.getPropertyStatus())
-                .officeRooms(domain.getOfficeRooms())
-                .bathrooms(domain.getBathrooms())
-                .parkingSpots(domain.getParkingSpots())
-                .isStreetFront(domain.isStreetFront())
-                .build();
-    }
-
 }
