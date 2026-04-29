@@ -28,7 +28,7 @@ public class ResidentialRepositoryAdapter implements PropertyRepositoryPort<Resi
     }
 
     @Override
-    public ResidentialProperty delete(ResidentialProperty property) {
-        return null;
+    public void delete(ResidentialProperty property) {
+
     }
 }
