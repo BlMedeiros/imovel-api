@@ -3,6 +3,8 @@ package com.bruno.imovel.infrastructure.adapters.out.persistence.commercial;
 import com.bruno.imovel.domain.property.ports.out.PropertyRepositoryPort;
 import com.bruno.imovel.domain.property.types.CommercialProperty;
 import com.bruno.imovel.infrastructure.adapters.out.persistence.commercial.entity.CommercialPropertyEntity;
+import com.bruno.imovel.infrastructure.adapters.out.persistence.commercial.mapper.CommercialPropertyMapper;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -11,23 +13,35 @@ import org.springframework.stereotype.Repository;
 public class CommercialRepositoryAdapter implements PropertyRepositoryPort<CommercialProperty> {
 
     private final JpaCommercialRepository repository;
+    private final CommercialPropertyMapper mapper;
 
     @Override
     public CommercialProperty save(CommercialProperty property) {
-        CommercialPropertyEntity commercialProperty = CommercialPropertyEntity.create(property);
+        CommercialPropertyEntity toSave = mapper.toEntity(property);
 
-        CommercialPropertyEntity saved = repository.save(commercialProperty);
+        CommercialPropertyEntity saved = repository.save(toSave);
 
-        return commercialPropertyMapper.toDomain(saved);
+        return mapper.toDomain(saved);
     }
 
     @Override
     public CommercialProperty update(CommercialProperty property) {
-        return null;
+        if (!repository.existsById(property.getId())) {
+            throw new EntityNotFoundException("CommercialProperty not found with id: " + property.getId());
+        }
+
+        CommercialPropertyEntity toUpdate = mapper.toEntity(property);
+        CommercialPropertyEntity updated = repository.save(toUpdate);
+
+        return mapper.toDomain(updated);
     }
 
     @Override
-    public CommercialProperty delete(CommercialProperty property) {
-        return null;
+    public void delete(CommercialProperty property) {
+        if (!repository.existsById(property.getId())) {
+            throw new EntityNotFoundException("CommercialProperty not found with id: " + property.getId());
+        }
+
+        repository.deleteById(property.getId());
     }
 }
