@@ -38,19 +38,5 @@ public class ResidentialPropertyEntity extends AbstractPropertyEntity {
     @Column(name = "has_garden")
     private boolean hasGarden;
 
-    public static ResidentialPropertyEntity create(ResidentialProperty domain) {
-        return ResidentialPropertyEntity.builder()
-                .id(domain.getId())
-                .price(domain.getPrice())
-                .totalArea(domain.getTotalArea())
-                .localization(LocalizationEntity.create(domain.getLocalization()))
-                .propertyStatus(domain.getPropertyStatus())
-                .bedrooms(domain.getBedrooms())
-                .bathrooms(domain.getBathrooms())
-                .parkingSpots(domain.getParkingSpots())
-                .hasPool(domain.isHasPool())
-                .hasGarden(domain.isHasGarden())
-                .build();
-    }
 }
 
