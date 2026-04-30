@@ -28,16 +28,16 @@ public class CommercialPropertyMapper {
     }
 
     public CommercialProperty toDomain(CommercialPropertyEntity entity) {
-        return CommercialProperty.builder()
-                .id(entity.getId())
-                .price(entity.getPrice())
-                .totalArea(entity.getTotalArea())
-                .localization(localizationMapper.toDomain(entity.getLocalization()))
-                .propertyStatus(entity.getPropertyStatus())
-                .officeRooms(entity.getOfficeRooms())
-                .bathrooms(entity.getBathrooms())
-                .parkingSpots(entity.getParkingSpots())
-                .isStreetFront(entity.isStreetFront())
-                .build();
+        return CommercialProperty.create(
+                entity.getId(),
+                entity.getPrice(),
+                entity.getTotalArea(),
+                localizationMapper.toDomain(entity.getLocalization()),
+                entity.getPropertyStatus(),
+                entity.getOfficeRooms(),
+                entity.getBathrooms(),
+                entity.getParkingSpots(),
+                entity.isStreetFront()
+        );
     }
 }
