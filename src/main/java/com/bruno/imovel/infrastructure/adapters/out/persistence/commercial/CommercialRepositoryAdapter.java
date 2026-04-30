@@ -27,7 +27,7 @@ public class CommercialRepositoryAdapter implements PropertyRepositoryPort<Comme
     @Override
     public CommercialProperty update(CommercialProperty property) {
         if (!repository.existsById(property.getId())) {
-            throw new EntityNotFoundException("CommercialProperty not found with id: " + property.getId());
+            throw new EntityNotFoundException("Commercial Property not found with id: " + property.getId());
         }
 
         CommercialPropertyEntity toUpdate = mapper.toEntity(property);
@@ -36,12 +36,13 @@ public class CommercialRepositoryAdapter implements PropertyRepositoryPort<Comme
         return mapper.toDomain(updated);
     }
 
+
     @Override
-    public void delete(CommercialProperty property) {
-        if (!repository.existsById(property.getId())) {
-            throw new EntityNotFoundException("CommercialProperty not found with id: " + property.getId());
+    public void delete(Long id) {
+        if (!repository.existsById(id)) {
+            throw new EntityNotFoundException("CommercialProperty not found with id: " + id);
         }
 
-        repository.deleteById(property.getId());
+        repository.deleteById(id);
     }
 }
