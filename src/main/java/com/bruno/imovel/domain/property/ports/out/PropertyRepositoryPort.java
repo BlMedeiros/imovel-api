@@ -8,5 +8,5 @@ public interface PropertyRepositoryPort<T extends Property> {
 
     T update(T property);
 
-    void delete(T property);
+    void delete(Long id);
 }
