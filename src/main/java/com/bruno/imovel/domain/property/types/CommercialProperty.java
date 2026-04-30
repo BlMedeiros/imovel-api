@@ -31,9 +31,11 @@ public class CommercialProperty extends Property {
 
     private boolean isStreetFront;    // se é imóvel de frente para a rua
 
-    public static CommercialProperty create(BigDecimal price,
+    public static CommercialProperty create(Long id,
+                                            BigDecimal price,
                                             Double totalArea,
                                             Localization localization,
+                                            PropertyStatus propertyStatus,
                                             int officeRooms,
                                             int bathrooms,
                                             int parkingSpots,
@@ -42,6 +44,7 @@ public class CommercialProperty extends Property {
         validate(price, totalArea, officeRooms, bathrooms, parkingSpots, localization);
 
         return CommercialProperty.builder()
+                .id(id)
                 .price(price)
                 .totalArea(totalArea)
                 .localization(localization)
@@ -49,7 +52,7 @@ public class CommercialProperty extends Property {
                 .bathrooms(bathrooms)
                 .parkingSpots(parkingSpots)
                 .isStreetFront(isStreetFront)
-                .propertyStatus(PropertyStatus.DRAFT)
+                .propertyStatus(propertyStatus)
                 .build();
     }
 
