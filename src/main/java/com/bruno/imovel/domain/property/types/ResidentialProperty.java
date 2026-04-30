@@ -31,31 +31,34 @@ public class ResidentialProperty extends Property {
 
     private boolean hasGarden;
 
-    public static ResidentialProperty create(BigDecimal price,
+    public static ResidentialProperty create(Long id,
+                                             BigDecimal price,
                                              Double totalArea,
                                              Localization localization,
+                                             PropertyStatus propertyStatus,
                                              int bedrooms,
                                              int bathrooms,
                                              int parkingSpots,
                                              boolean hasPool,
                                              boolean hasGarden) {
 
-        validate(price, totalArea, bedrooms, bathrooms, parkingSpots, localization);
+        validate(price, totalArea,propertyStatus, bedrooms, bathrooms, parkingSpots, localization);
 
         return ResidentialProperty.builder()
+                .id(id)
                 .price(price)
                 .totalArea(totalArea)
                 .localization(localization)
+                .propertyStatus(propertyStatus)
                 .bedrooms(bedrooms)
                 .bathrooms(bathrooms)
                 .parkingSpots(parkingSpots)
                 .hasPool(hasPool)
                 .hasGarden(hasGarden)
-                .propertyStatus(PropertyStatus.DRAFT)
                 .build();
     }
 
-    private static void validate(BigDecimal price, Double totalArea, int bedrooms, int bathrooms, int parkingSpots, Localization localization) {
+    private static void validate(BigDecimal price, Double totalArea,PropertyStatus propertyStatus, int bedrooms, int bathrooms, int parkingSpots, Localization localization) {
 
         if (price != null && price.compareTo(BigDecimal.ZERO) == 0) {
             throw new InvalidPriceException("O preço, quando informado, deve ser maior que zero.");
@@ -83,6 +86,12 @@ public class ResidentialProperty extends Property {
 
         if (localization.getLatitude() == null || localization.getLongitude() == null) {
             throw new DomainValidationException("As coordenadas geográficas (latitude e longitude) são obrigatórias.");
+        }
+
+        if(propertyStatus == null) {
+            throw new DomainValidationException("O status do imóvel é obrigatório.");
+        }
+
         }
     }
 
