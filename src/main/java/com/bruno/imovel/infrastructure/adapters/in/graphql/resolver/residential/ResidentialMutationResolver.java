@@ -1,6 +1,7 @@
-package com.bruno.imovel.application.property.resolvers.residential.mutation;
+package com.bruno.imovel.infrastructure.adapters.in.graphql.resolver.residential;
 
-import com.bruno.imovel.application.property.usecases.residential.CreateResidentialPropertyUseCase;
+import com.bruno.imovel.application.property.residential.usecase.CreateResidentialPropertyUseCase;
+import com.bruno.imovel.domain.property.types.ResidentialProperty;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;

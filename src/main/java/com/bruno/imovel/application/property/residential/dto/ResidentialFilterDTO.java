@@ -1,4 +1,4 @@
-package com.bruno.imovel.application.property.type.residential.dto;
+package com.bruno.imovel.application.property.residential.dto;
 
 import com.bruno.imovel.application.property.common.dto.BaseFilterDTO;
 import com.bruno.imovel.application.property.common.dto.GeoFilterDTO;

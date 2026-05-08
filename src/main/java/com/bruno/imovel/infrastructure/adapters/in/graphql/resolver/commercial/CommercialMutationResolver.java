@@ -1,4 +1,4 @@
-package com.bruno.imovel.application.property.resolvers.commercial.mutation;
+package com.bruno.imovel.infrastructure.adapters.in.graphql.resolver.commercial;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

@@ -1,7 +1,7 @@
-package com.bruno.imovel.application.property.type.commercial.predicate;
+package com.bruno.imovel.application.property.commercial.predicate;
 
 import com.bruno.imovel.application.property.common.predicate.BasePredicateBuilder;
-import com.bruno.imovel.application.property.type.commercial.dto.CommercialFilterDTO;
+import com.bruno.imovel.application.property.commercial.dto.CommercialFilterDTO;
 import com.bruno.imovel.infrastructure.adapters.out.persistence.commercial.entity.QCommercialPropertyEntity;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Predicate;

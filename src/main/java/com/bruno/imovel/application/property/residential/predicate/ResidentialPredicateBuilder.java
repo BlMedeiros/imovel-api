@@ -1,7 +1,7 @@
-package com.bruno.imovel.application.property.type.residential.predicate;
+package com.bruno.imovel.application.property.residential.predicate;
 
 import com.bruno.imovel.application.property.common.predicate.BasePredicateBuilder;
-import com.bruno.imovel.application.property.type.residential.dto.ResidentialFilterDTO;
+import com.bruno.imovel.application.property.residential.dto.ResidentialFilterDTO;
 import com.bruno.imovel.infrastructure.adapters.out.persistence.residential.entity.QResidentialPropertyEntity;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Predicate;
