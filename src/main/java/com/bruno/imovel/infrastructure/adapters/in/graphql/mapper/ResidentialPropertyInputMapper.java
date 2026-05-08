@@ -26,8 +26,10 @@ public class ResidentialPropertyInputMapper {
                 input.totalArea(),
                 localization,
                 input.bedrooms(),
+                input.bathrooms(),
                 input.parkingSpots(),
-                input.hasPool()
+                input.hasPool(),
+                input.hasGarden()
         );
     }
 }

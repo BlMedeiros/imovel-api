@@ -12,8 +12,10 @@ public record CreateResidentialPropertyRequest(
         Double totalArea,
         LocalizationRequest localization,
         Integer bedrooms,
+        Integer bathrooms,
         Integer parkingSpots,
-        Boolean hasPool
+        Boolean hasPool,
+        Boolean hasGarden
 ) {
     public ResidentialProperty toDomain() {
         var loc = Localization.builder()
@@ -31,10 +33,10 @@ public record CreateResidentialPropertyRequest(
                 loc,
                 PropertyStatus.DRAFT,
                 bedrooms != null ? bedrooms : 0,
-                0,
+                bathrooms != null ? bathrooms : 0,
                 parkingSpots != null ? parkingSpots : 0,
                 hasPool != null && hasPool,
-                false
+                hasGarden != null && hasGarden
         );
     }
 }

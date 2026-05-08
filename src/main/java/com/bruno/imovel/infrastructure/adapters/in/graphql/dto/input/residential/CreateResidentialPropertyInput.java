@@ -7,7 +7,9 @@ public record CreateResidentialPropertyInput(
         Double totalArea,
         LocalizationInput localization,
         Integer bedrooms,
+        Integer bathrooms,
         Integer parkingSpots,
-        Boolean hasPool
+        Boolean hasPool,
+        Boolean hasGarden
 ) {
 }

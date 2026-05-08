@@ -12,7 +12,26 @@ import org.springframework.stereotype.Component;
 public class ResidentialPropertyMapper {
 
     public ResidentialProperty toDomain(CreateResidentialPropertyRequest request) {
+        var loc = Localization.builder()
+                .street(request.localization().street())
+                .neighborhood(request.localization().neighborhood())
+                .city(request.localization().city())
+                .latitude(request.localization().latitude())
+                .longitude(request.localization().longitude())
+                .build();
 
+        return ResidentialProperty.create(
+                null,
+                request.price(),
+                request.totalArea(),
+                loc,
+                PropertyStatus.DRAFT,
+                request.bedrooms(),
+                request.bathrooms(),
+                request.parkingSpots(),
+                request.hasPool(),
+                request.hasGarden()
+        );
     }
 
     public CreateResidentialPropertyResponse fromDomain(ResidentialProperty property) {

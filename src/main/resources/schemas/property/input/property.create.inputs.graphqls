@@ -15,8 +15,10 @@ input CreateResidentialPropertyInput {
     localization: LocalizationInput!
 
     bedrooms: Int!
+    bathrooms: Int!
     parkingSpots: Int!
     hasPool: Boolean!
+    hasGarden: Boolean!
 }
 
 input LocalizationInput {
